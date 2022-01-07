@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Language" content="en">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+		<title>Design by Inês Tabanez</title>
+		<link rel="shortcut icon" type="image/jpg" href="assets/deepness.svg"/>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-box-sizing: border-box;
+    		    -moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			/*Fontes*/
+			@font-face {
+				font-family: Larken Bold;
+				src: url("assets/Larken Bold.ttf");
+			}
+			@font-face {
+				font-family: Chantilly Serial Regular;
+				src: url("assets/chantilly-regular.ttf");
+			}
+			@font-face {
+				font-family: Chantilly Serial Bold;
+				src: url("assets/chantilly-bold.ttf");
+			}
+
+			body {
+				font-family: Chantilly Serial Regular;
+				color: #202225;
+				overflow-x: hidden;
+
+				/*Hide vertical scrollbar but allow scroll*/
+				-ms-overflow-style: none; /* for Internet Explorer, Edge */
+				scrollbar-width: none; /* for Firefox */
+				overflow-y: scroll; 
+
+				/*Stop text selection on website*/
+				-webkit-user-select: none;
+				-moz-user-select: -moz-none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+
+			/*Hide vertical scrollbar but allow scroll*/
+			body::-webkit-scrollbar {
+				display: none; /* for Chrome, Safari, and Opera */
+			}
+			
+			section {
+				height: 100vh;
+				background-color: #FCFAF0;
+				padding: 0 10vw 0 10vw;
+			}
+
+			#welcome {
+				display: flex;
+				align-items: center;
+			}
+
+			.navbar {
+				width: 100%;
+				position: fixed;
+				overflow: hidden;
+				padding: 5vh 3vw 5vh 3vw;
+				display: flex;
+				text-align: center;
+				align-items: center;
+			}
+
+			.nav-links {
+				margin: auto;
+				display: flex;
+				justify-content: center;
+				text-align: center;
+				align-items: center;
+			}
+
+			#icons {
+				display: block;
+				text-align: left;
+				position: absolute;
+			}
+
+			#icons img {
+				cursor: pointer;
+				width: 4vh;
+				height: 100%;
+    			vertical-align: middle;
+			}
+
+			#icons img:nth-child(2) {
+				margin-left: 15px;
+			}
+
+			.nav-links a {
+				font-family: Chantilly Serial Bold;
+				font-size: 2vh;
+				text-decoration: none;
+				color: #202225;
+				padding: 0 15px 0 15px;
+			}
+
+			#name-div {
+				padding-top: 12vh;
+				width: 80%;
+			}
+
+			.title, .subtitle, p, .navbar, .meaning, .subtitle2, .symbol {
+				z-index: 999;
+			}
+
+			.title, .subtitle, .subtitle2 {
+				display: inline-block;
+				font-family: Larken Bold;
+				font-size: 10vw;
+				line-height: 0.9;
+				word-spacing: -7px;
+			}
+
+			.subtitle {
+				font-size: 7vw;
+			}
+
+			.subtitle2 {
+				font-size: 2.5vw;
+				padding-top: 5vh;
+				padding-bottom: 1.5vh;
+				width: 100%;
+			}
+
+			.title {
+				white-space: nowrap;
+			}
+
+			#about-me {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				padding-top: 10vh;
+			}
+
+			#contact {
+				background-image: url("assets/contact-background.png");
+				background-size: cover;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;				
+			}
+			
+			.presentation {
+				flex-basis: 50%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+
+			#about-text, #symbols-text {
+				padding-top: 5vh;
+				width: 500px;
+				align-self: flex-end;
+				font-size: 2vh;
+			}
+
+			#contact-text {
+				font-size: 2vh;
+				padding-top: 5vh;				
+			}
+
+			#symbols {
+				height: auto;
+				display: flex;
+				flex-direction: column;
+				padding: 5vh 10vw 5vh 10vw;
+			}
+
+			#symbols-wrapper {
+				display: grid;
+				grid-column-gap: 10px;
+				grid-row-gap: 20px;
+				align-items: center;
+				height: 100%;
+			}
+
+			.symbol {
+				display: block;
+				width: 20vw;
+			}
+
+			.symbol:nth-child(1) {
+				grid-column: 1;
+				grid-row: 1/2;
+			}
+			.symbol:nth-child(2) {
+				grid-column: 1;
+				grid-row: 3/4;
+			}
+			.symbol:nth-child(3) {
+				grid-column: 2;
+				grid-row: 2/3;
+			}
+			.symbol:nth-child(4) {
+				grid-column: 3;
+				grid-row: 3/4;
+			}
+
+			#symbols-title-wrapper {
+				position: absolute;
+				align-self: flex-end;
+				width: 500px;
+				text-align: right;
+			}
+
+			#photo {
+				width: 60vh;
+				height: auto;
+			}
+
+			.meaning {
+				font-size: 1.7vh;
+			}
+
+			#links {
+				padding-left: 17vw;
+				display: flex;
+				flex-direction: row;
+				text-align: center;
+				justify-content: center;
+				height: 52vh;
+			}
+
+			#behance {
+				align-self: flex-start;
+			}
+			#behance:hover {
+				width: 60%;
+				content: url('assets/behance2.svg');
+			}
+
+			#email {
+				align-self: flex-end;
+			}
+			#email:hover {
+				content: url('assets/email2.svg');
+				width: 60%;
+			}
+
+			#contact-presentation {
+				padding-top: 20vh;
+			}
+
+
+			/*Adapt for phone screens*/
+			@media only screen and (max-width: 1200px) {
+				#symbols-wrapper {
+					flex-direction: column;
+				}
+				#what, #how {
+					position: static;
+					text-align: center;
+					align-self: center;
+					justify-content: center;
+					max-width: 80%;
+				}
+				#symbols {
+					display: flex;
+					flex-direction: column;
+					padding: 10vh 10vw 10vh 10vw;
+				}
+				#symbols-wrapper {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+				.symbol {
+					display: initial;
+					text-align: center;
+					padding-top: 10vh;
+				}
+				p {
+					text-align: center;
+				}
+				#photo {
+					max-width: 40vh;
+				}
+				.title, .subtitle {
+					word-spacing: -3px;
+					font-size: 14vw;
+				}
+				.subtitle2 {
+					font-size: 8vw;
+				}
+				#about-me, #contact {
+					flex-direction: column;
+					justify-content: space-evenly;
+				}
+				#about-me {
+					height: 110vh;
+				}
+				.presentation,  #symbols-title-wrapper {
+					display: flex;
+					flex-direction: column;
+					flex-basis: 0;
+					justify-content: center;
+					align-items: center;
+					width: auto;
+				}
+				#symbols-title-wrapper {
+					position: static;
+				}
+				#about-text, #symbols-text, #contact-text {
+					width: 100%;
+				}
+				.symbol {
+					width: auto;
+				}
+				#links {
+					padding: 5vh 0 7vh 0;
+				}
+				.nav-links a {
+					padding: 0 5px 0 5px;
+				}
+				.nav-links {
+					display: block;
+				}		
+				#icons img:nth-child(2) {
+					margin-left: 5px;
+				}
+				#name-div {
+					padding-top: 0vh;
+				}
+			}
+			@media only screen and (max-width: 620px) {
+				.nav-links a {
+					font-size: 3vw;
+				}
+				#icons img {
+					height: 7vw;
+					width: auto;
+				}
+				.navbar {
+					justify-content: center;
+					flex-direction: column-reverse;
+				}
+				#icons {
+					padding-top: 2vh;
+					position: relative;
+				}
+				.nav-links a {
+					font-size: 4vw;
+				}
+			}
+		</style>
+	</head>
+
+	<body onload="namePos('title1'); namePos('title2'); randomLoadShapes()">
+		<div class="navbar">
+			<div id="icons">
+				<img src ="assets/loop.png" onclick="randomLoadShapes()">
+				<img src ="assets/add.png" onclick="loadShape()">
+			</div>
+
+			<div class="nav-links">				
+				<a href="#welcome">welcome</a>
+				<a href="#about-me">about me</a>
+				<a href="#contact">follow my work</a>
+			</div>
+		</div>
+
+		<section id="welcome">
+			<div id="name-div">
+				<div class="title" id="title1">design by</div>
+				<div class="title" id="title2">inês tabanez</div>
+			</div>
+		</section>
+
+		<section id="about-me">
+			<div class="presentation">
+				<div class="subtitle" id="who">who am i?</div>
+				<p id="about-text">
+					Hi there! My name is Inês Tabanez and I’m a 22 year-old girl from Portugal. 
+					Currently, I am finishing my Master’s Degree in Design and Multimedia at the University of Coimbra.
+					I also have a degree in Computer Science.
+					I have a huge passion for web development since I get to mix my two main interests: design and programming.
+					When I am not sitting in front of my laptop, I love spending quality time with my family, my friends and my pets,
+					exploring new places and bringing a camera with me to capture it all. Aditionally, I am passionate about
+					cinema, environmental sustainability and I'm way more interested in pop culture than I should (oops).
+				</p>
+			</div>
+			<img id="photo" src="assets/photo/yellow.png">
+		</section>
+
+		<section id="symbols">
+			<div id="symbols-title-wrapper">
+				<div class="subtitle" id="what">what am i about?</div>
+				<p id="symbols-text">
+					I think it's clear by now how much I am obsessed with colors and shapes, especially circular and trippy ones.
+					Exploring collages with multiple layer arrangements is also something that I tend to enjoy in my design creations.
+					The design of this personal web page is inspired by all of these things. I created four shapes to represent four of my traits, 
+					which are mentioned in this section. I used them as a base to make a web experience for all of you, so that you can get 
+					an idea of what my design process is like. I encourage you to interact with the shapes on the welcome screen and make your own 
+					unique designs. You can drag the shapes all the way down to the end of the website! Go crazy with it and mostly, have fun!
+				</p>
+			</div>
+		
+			<div class="grid-container" id="symbols-wrapper">
+				<div class="symbol">
+					<img src ="assets/perfeccionism.svg" style="filter: invert(42%) sepia(41%) saturate(3533%) hue-rotate(345deg) brightness(99%) contrast(90%)">
+					<div class="subtitle2">Perfeccionism</div>
+					<p class="meaning">
+						I am extremely critical of myself, which is both a good and a not so great thing. Although I put so much pressure and stress
+						on my shoulders to make things exactly as I want them to, when I take my time, I usually end up with something that is the best I can
+						do it and something that I'm proud of. That feeling is irreplaceable.
+					</p>
+				</div>
+				<div class="symbol">
+					<img src ="assets/emotion.svg" style="filter: invert(52%) sepia(67%) saturate(648%) hue-rotate(292deg) brightness(97%) contrast(94%)">
+					<div class="subtitle2">Emotion</div>
+					<p class="meaning">
+						Everything that I do has a lot of emotion behind it. I am always told how emotional I am but I take that as compliment because
+						it makes me express myself that much better and it means that I care. I am able to take all of that emotion and learn so much from it, 
+						making me evolve constantly in every aspect of my life. I love when I get to explore emotions in my projects, to make people feel 
+						something and connect with them.
+					</p>
+				</div>
+				<div class="symbol">
+					<img src ="assets/helpfulness.svg" style="filter: invert(100%) sepia(48%) saturate(3143%) hue-rotate(331deg) brightness(112%) contrast(89%)">
+					<div class="subtitle2">Genorosity</div>
+					<p class="meaning">
+						Helping people is one of things that brings me the biggest joy in life. If I have the capability to make someone's day a little better, 
+						then I will 100% take that chance. I deeply believe that this world needs more tolerance and kindness between people. After all, we all
+						have so much to offer and so much to receive from the ones around us and that makes our lives that much meaningful.
+					</p>
+				</div>
+				<div class="symbol">
+					<img src ="assets/deepness.svg" style="filter: invert(87%) sepia(20%) saturate(5254%) hue-rotate(349deg) brightness(100%) contrast(94%)">
+					<div class="subtitle2">Deepness</div>
+					<p class="meaning">
+						Like my designs, I have a lot of layers. I spend a lot of time overthinking and trying to get answers to all of my questions. I am an 
+						extremely curious person, which I consider one of my best traits. Although I sometimes get stuck on my thoughts, reflecting so deeply 
+						and having interest in all kinds of things makes me so much more complex and wise and I get to make better decisions more carefully. 
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="presentation" id="contact-presentation">
+				<div class="subtitle" id="how">let's work together!</div>
+				<p id="contact-text">
+					Thanks for stopping by! I hope you enjoyed what you've seen from me so far! Please be free to check out my Behance portfolio and contact me
+					if you're interested to know more and possibly work together. I also appreciate feedback a lot. My PDF portfolio is currently only available upon request. 
+					Have a wonderful day!
+				</p>
+			</div>
+
+			<div id="links">
+				<a id="behance" href="https://www.behance.net/inst"><img id="behance-img" src="assets/behance.svg" width="90%"></a>
+				<a id="email" href="mailto:uc2017250289@student.uc.pt"><img id="email-img" src="assets/email.svg" width="100%"></a>
+			</div>
+		</section>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
+		<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script src="jquery.ui.touch-punch.min.js"></script>
+		
+		<script>
+			//Hide loop and add buttons if user is not on welcome screen
+			//Credits: https://stackoverflow.com/questions/20791374/jquery-check-if-element-is-visible-in-viewport
+			$.fn.isInViewport = function() {
+				var elementTop = $(this).offset().top;
+				var elementBottom = elementTop + $(this).outerHeight();
+
+				var viewportTop = $(window).scrollTop();
+				var viewportBottom = viewportTop + $(window).height();
+
+				return elementBottom > viewportTop && elementTop < viewportBottom;
+			};
+
+			var icons = document.getElementById("icons");
+			$(window).on('resize scroll', function() { 
+				if ($('#name-div').isInViewport()) {
+					icons.style.display = "block";
+				} 
+				else {
+					icons.style.display = "none";
+				} 
+			});
+
+			//Make scroll between screens smoother
+			$(function(){
+				$(".navbar .nav-links a").on('click', function(){
+					$("html, body").animate({
+						scrollTop: $($.attr(this, 'href')).offset().top
+					}, 500); //500 = 0.5seg
+				});
+			});
+
+			//Change photo on a loop 
+			$(function(){
+				var index = 0;
+				var images = ["yellow", "orange" , "green" , "lime" , "pink" , "purple"];
+				
+				setInterval(function(){
+					if(index == images.length) index = 0;
+					$("#photo").attr("src", "assets/photo/" + images[index] + ".png");
+					index++;
+				}, 2000);
+			});	
+			
+			//Symbols scale animation on scroll
+			$(window).on("scroll", function(){
+				var scroll = $(window).scrollTop();
+				if($(window).scrollTop() + $(window).height() - 100 >= $(".symbol img").offset().top) {
+					//alert("On viewport");
+					$(".symbol img").css({
+						transform: 'scale(' + (100 + scroll / 5) / 600 + ')',
+					});
+				}
+			})
+
+			//Define random horizontal positions for name and surname
+			function namePos(elem) {
+				//Get name-div variable and width
+				var nameDiv = document.getElementById("name-div");
+				var nameDivWidth = nameDiv.offsetWidth;
+
+				//Get name variable and width
+				var name = document.getElementById(elem);
+				var nameWidth = name.offsetWidth;
+				
+				//Determine random position for name inside name-div boundaries (included)
+				var min = 0;
+				var max = nameDivWidth-nameWidth;
+				var randomPos = Math.floor(Math.random() * (max - min + 1)) + min;
+
+				name.style.paddingLeft = randomPos + "px";
+			}
+
+			function randomLoadShapes() {
+				//Clean previous images
+				$('#welcome img').remove();
+
+				//For each shape, costumize and load to screen
+				for(var i=0; i<4; i++) {
+					loadShape();
+				}
+			}
+
+			//Load and customize random shapes for welcome section
+			function loadShape(){
+				var shapes = [
+					'assets/deepness.svg',
+					'assets/emotion.svg',
+					'assets/helpfulness.svg',
+					'assets/perfeccionism.svg',
+				];
+
+				var colors = [
+					'invert(42%) sepia(41%) saturate(3533%) hue-rotate(345deg) brightness(99%) contrast(90%)',
+					'invert(52%) sepia(67%) saturate(648%) hue-rotate(292deg) brightness(97%) contrast(94%)',
+					'invert(77%) sepia(15%) saturate(1004%) hue-rotate(89deg) brightness(88%) contrast(89%)',
+					'invert(100%) sepia(48%) saturate(3143%) hue-rotate(331deg) brightness(112%) contrast(89%)',
+					'invert(37%) sepia(16%) saturate(2121%) hue-rotate(250deg) brightness(97%) contrast(83%)',
+					'invert(87%) sepia(20%) saturate(5254%) hue-rotate(349deg) brightness(100%) contrast(94%)',
+				]
+
+				var img = new Image();
+				img.src = shapes[Math.floor(Math.random() * shapes.length)];
+
+				//Define shape color and size
+				var color = colors[Math.floor(Math.random() * colors.length)];
+				if(screen.width < 1200) var width = Math.floor(Math.random() * (50 - 25 + 1)) + 25;
+				else var width = Math.floor(Math.random() * (25 - 5 + 1)) + 5;
+				img.setAttribute("width", width + '%');
+
+				//Define shape position
+				var section = document.getElementById("welcome");
+				var styles = window.getComputedStyle(section);
+				var sectionPadding = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+
+				//Convert shape width from % to pixels
+				width = screen.width * (width/100);
+				
+				var sectionWidth = section.offsetWidth - sectionPadding;
+				var minLeft = 0; var maxLeft = sectionWidth-width;
+
+				var navbar = document.getElementsByClassName("navbar")[0];
+				var minTop = navbar.offsetHeight, maxTop = section.offsetHeight-width;
+
+				var randomLeft = Math.floor(Math.random() * (maxLeft - minLeft + 1)) + minLeft;
+				var randomTop = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
+				
+				//Set defined attributes
+				img.setAttribute("style", 'filter:' + color + '; margin-left: ' + randomLeft + 'px' + "; margin-top: " +  randomTop + "px" + "; position: absolute; align-self: flex-start;");
+
+				//Add shape to screen
+				document.getElementById('welcome').appendChild(img);
+
+				//Make image draggable
+				img.setAttribute("class", "draggable ui-widget-content");
+				img.setAttribute("draggable", "true");
+				$(img).draggable({ scroll: false });
+				$(img).droppable({
+					drop: function(event, ui) {
+					$(this)
+						.addClass("isDropped")
+						.html("Dropped!");
+					}
+				});
+			}
+
+			//Make name and surname draggable
+			$(function() {
+				$("#title1").draggable({ axis: "x", scroll: false});
+				$("#title2").draggable({ axis: "x", scroll: false });
+			});			
+		</script>
+	</body>
+</html>
