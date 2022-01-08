@@ -136,6 +136,7 @@
 			}
 
 			.title {
+				cursor: pointer;
 				white-space: nowrap;
 			}
 
@@ -601,7 +602,7 @@
 				var randomTop = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
 				
 				//Set defined attributes
-				img.setAttribute("style", 'filter:' + color + '; margin-left: ' + randomLeft + 'px' + "; margin-top: " +  randomTop + "px" + "; position: absolute; align-self: flex-start;");
+				img.setAttribute("style", 'filter:' + color + '; margin-left: ' + randomLeft + 'px' + "; margin-top: " +  randomTop + "px" + "; position: absolute; align-self: flex-start; cursor: pointer;");
 
 				//Add shape to screen
 				document.getElementById('welcome').appendChild(img);
